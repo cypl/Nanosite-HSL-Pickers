@@ -5,7 +5,12 @@ function Header() {
   return (
     <HeaderWrapper>
       <Logo />
-      <Info></Info>
+      <Nav>
+        <Info>Test RGAA</Info>
+        <Info>Exporter</Info>
+        <Info>Réinitialiser</Info>
+        <Info>?</Info>
+      </Nav>
     </HeaderWrapper>
   )
 }
@@ -19,14 +24,24 @@ const HeaderWrapper = styled.header`
   width: 100%;
   height: 80px;
 `
-const Info = styled.div`
+const Nav = styled.ul`
   position: absolute;
   top: 20px;
   right: 30px;
-  width: 40px;
-  height: 40px;
+  font-size: 10px;
+  line-height: 1;
+`
+const Info = styled.li`
+  display: inline-block;
+  font-size: 10px;
+  line-height: 1;
   border-radius: 20px;
+  padding: 10px 15px;
+  color: #fff;
+  margin-left: 10px;
   border: 2px solid #111;
+  text-transform: uppercase;
+  letter-spacing: 1px;
   background-color: transparent;
   cursor: pointer;
   &:hover {
