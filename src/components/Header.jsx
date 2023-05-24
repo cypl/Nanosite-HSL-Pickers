@@ -6,10 +6,10 @@ function Header() {
     <HeaderWrapper>
       <Logo />
       <Nav>
-        <Info>Test RGAA</Info>
-        <Info>Exporter</Info>
-        <Info>Réinitialiser</Info>
-        <Info>?</Info>
+        <ItemNav className="inactive">Test RGAA</ItemNav>
+        <ItemNav className="inactive">Exporter</ItemNav>
+        <ItemNav>Réinitialiser</ItemNav>
+        <ItemNav className="inactive">?</ItemNav>
       </Nav>
     </HeaderWrapper>
   )
@@ -28,17 +28,17 @@ const Nav = styled.ul`
   position: absolute;
   top: 20px;
   right: 30px;
-  font-size: 10px;
+  font-size: 11px;
   line-height: 1;
 `
-const Info = styled.li`
+const ItemNav = styled.li`
   display: inline-block;
-  font-size: 10px;
+  font-size: 11px;
   line-height: 1;
   border-radius: 20px;
   padding: 10px 15px;
   color: #fff;
-  margin-left: 10px;
+  margin-left: 12px;
   border: 2px solid #111;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -46,5 +46,9 @@ const Info = styled.li`
   cursor: pointer;
   &:hover {
     background-color: #111;
+  }
+  &.inactive {
+    opacity: 0.4;
+    pointer-events: none;
   }
 `
