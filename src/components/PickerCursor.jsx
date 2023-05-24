@@ -4,7 +4,14 @@ import PropTypes from 'prop-types'
 import Draggable from 'react-draggable'
 import { useViewportWidth } from '../hooks/useViewportWidth'
 
-function PickerCursor({ showData, cssClass, colorH, colorS, colorL }) {
+function PickerCursor({
+  showData,
+  cssClass,
+  colorH,
+  colorS,
+  colorL,
+  onChange,
+}) {
   //showData = false
   const viewportWidth = useViewportWidth() // détermine la largeur du viewport (on load + on resize)
   const refCursorDirection = useRef(null) // ajoute une ref sur la trajectoire du curseur
@@ -18,11 +25,10 @@ function PickerCursor({ showData, cssClass, colorH, colorS, colorL }) {
 
   // détermine la position du curseur
   const [cursorPosition, setCursorPosition] = useState(0)
-
   // Calcul de la position du curseur à partir de la valeur initiale de H, S ou L
   useLayoutEffect(() => {
     // calculer la position du curseur à partir de la valeur
-    function calculatePositionFormValue(value, width) {
+    function calculatePositionFromValue(value, width) {
       if (cssClass === 'hue') {
         return Math.round((width - 1) * (value / 360))
       }
@@ -32,30 +38,20 @@ function PickerCursor({ showData, cssClass, colorH, colorS, colorL }) {
     }
     // retour de la valeur au setter
     if (cssClass === 'hue') {
-      setCursorPosition(calculatePositionFormValue(colorH, width))
+      setCursorPosition(calculatePositionFromValue(colorH, width))
     }
     if (cssClass === 'saturation') {
-      setCursorPosition(calculatePositionFormValue(colorS, width))
+      setCursorPosition(calculatePositionFromValue(colorS, width))
     }
     if (cssClass === 'lightness') {
-      setCursorPosition(calculatePositionFormValue(colorL, width))
+      setCursorPosition(calculatePositionFromValue(colorL, width))
     }
   }, [colorH, colorS, colorL, cssClass, width])
 
   // Calcul de la nouvelle valeur de H, S ou L à partir de la nouvelle position du curseur
-  useLayoutEffect(() => {
-    function calculateValueFormPosition(position, width) {
-      if (cssClass === 'hue') {
-        return Math.round((position / width) * 360)
-      }
-      if (cssClass === 'saturation' || cssClass === 'lightness') {
-        return Math.round((position / width) * 100)
-      }
-    }
-    // si on modifie une position, on calcule la nouvelle valeur,
-
-    console.log(calculateValueFormPosition(cursorPosition, width))
-  }, [cursorPosition, cssClass, width])
+  function calculateValueFromPosition(position, width, max) {
+    return Math.round((position / width) * max)
+  }
 
   const handleDrag = (e, { deltaX }) => {
     const newPosition = cursorPosition + deltaX
@@ -66,6 +62,15 @@ function PickerCursor({ showData, cssClass, colorH, colorS, colorL }) {
     // Vérifier si la nouvelle position dépasse les limites
     if (newPosition >= minPosition && newPosition <= maxPosition) {
       setCursorPosition(newPosition) // en changeant la position du curseur, on doit récupérer un nouvelle valeur de colorH ou colorS ou colorL
+      if (cssClass === 'hue') {
+        onChange(calculateValueFromPosition(newPosition, width, 360))
+      }
+      if (cssClass === 'saturation') {
+        onChange(calculateValueFromPosition(newPosition, width, 100))
+      }
+      if (cssClass === 'lightness') {
+        onChange(calculateValueFromPosition(newPosition, width, 100))
+      }
     }
   }
 
@@ -116,6 +121,7 @@ PickerCursor.propTypes = {
   colorH: PropTypes.number,
   colorS: PropTypes.number,
   colorL: PropTypes.number,
+  onChange: PropTypes.func,
 }
 
 const CursorWrapper = styled.div`

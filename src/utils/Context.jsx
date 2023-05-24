@@ -31,7 +31,7 @@ export const ColorProvider = ({ children }) => {
   const [colorClair, setColorClair] = useState(colorStarter.clair)
 
   // $clair2
-  const [colorClair2, setcColorClair2] = useState(colorStarter.clair2)
+  const [colorClair2, setColorClair2] = useState(colorStarter.clair2)
 
   return (
     <ColorContext.Provider
@@ -44,6 +44,14 @@ export const ColorProvider = ({ children }) => {
         colorSecondaire2,
         colorClair,
         colorClair2,
+        setColorPrimaire1,
+        setColorPrimaire,
+        setColorPrimaire2,
+        setColorSecondaire1,
+        setColorSecondaire,
+        setColorSecondaire2,
+        setColorClair,
+        setColorClair2,
       }}
     >
       {children}

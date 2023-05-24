@@ -1,8 +1,57 @@
-import { useState } from 'react'
-import { fromHexToHSL } from '../utils/colorTransform'
+import { useState, useEffect } from 'react'
+import { fromHexToHsl, fromHslToHex } from '../utils/colorTransform'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import PickerCursor from './PickerCursor'
+
+function PickerPanel({ hover, colorHex, setColorHex }) {
+  // on récupère les valeurs de H, S, L à partir de colorHex
+  const [colorH, setColorH] = useState(fromHexToHsl(colorHex)[0])
+  const [colorS, setColorS] = useState(fromHexToHsl(colorHex)[1])
+  const [colorL, setColorL] = useState(fromHexToHsl(colorHex)[2])
+
+  // lorsqu'une valeur de H,S ou L est modifiée, on renvoie une couleur Hex
+  useEffect(() => {
+    setColorHex(fromHslToHex(colorH, colorS, colorL))
+  }, [colorH, colorS, colorL, setColorHex])
+
+  return (
+    <PickerSettingsPanel className={hover ? 'active' : ''}>
+      <PickerCursor
+        showData={false}
+        cssClass={'hue'}
+        colorH={colorH}
+        colorS={colorS}
+        colorL={colorL}
+        onChange={setColorH}
+      />
+      <PickerCursor
+        showData={false}
+        cssClass={'saturation'}
+        colorH={colorH}
+        colorS={colorS}
+        colorL={colorL}
+        onChange={setColorS}
+      />
+      <PickerCursor
+        showData={false}
+        cssClass={'lightness'}
+        colorH={colorH}
+        colorS={colorS}
+        colorL={colorL}
+        onChange={setColorL}
+      />
+    </PickerSettingsPanel>
+  )
+}
+
+export default PickerPanel
+
+PickerPanel.propTypes = {
+  hover: PropTypes.bool,
+  colorHex: PropTypes.string,
+  setColorHex: PropTypes.func,
+}
 
 const PickerSettingsPanel = styled.div`
   width: calc(100% - 20px);
@@ -23,43 +72,3 @@ const PickerSettingsPanel = styled.div`
     transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
   }
 `
-
-function PickerPanel({ hover, colorHex }) {
-  // ici, on récupère H,S,L à partir de colorHex
-  const [colorH, setColorH] = useState(fromHexToHSL(colorHex)[0])
-  const [colorS, setColorS] = useState(fromHexToHSL(colorHex)[1])
-  const [colorL, setColorL] = useState(fromHexToHSL(colorHex)[2])
-
-  return (
-    <PickerSettingsPanel className={hover ? 'active' : ''}>
-      <PickerCursor
-        showData={false}
-        cssClass={'hue'}
-        colorH={colorH}
-        colorS={colorS}
-        colorL={colorL}
-      />
-      <PickerCursor
-        showData={false}
-        cssClass={'saturation'}
-        colorH={colorH}
-        colorS={colorS}
-        colorL={colorL}
-      />
-      <PickerCursor
-        showData={false}
-        cssClass={'lightness'}
-        colorH={colorH}
-        colorS={colorS}
-        colorL={colorL}
-      />
-    </PickerSettingsPanel>
-  )
-}
-
-export default PickerPanel
-
-PickerPanel.propTypes = {
-  hover: PropTypes.bool,
-  colorHex: PropTypes.string,
-}

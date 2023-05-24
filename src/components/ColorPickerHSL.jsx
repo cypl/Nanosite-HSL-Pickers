@@ -10,7 +10,8 @@ function ColorPickerHSL({
   sizeRatio,
   className,
   colorName,
-  colorHex, // state du context
+  colorHex,
+  setColorHex,
 }) {
   const [hover, setHover] = useState(false)
   return (
@@ -28,7 +29,11 @@ function ColorPickerHSL({
         }}
       >
         <PickerInfos colorName={colorName} hexValue={colorHex} hover={hover} />
-        <PickerPanel hover={hover} colorHex={colorHex} />
+        <PickerPanel
+          hover={hover}
+          colorHex={colorHex}
+          setColorHex={setColorHex}
+        />
       </PickerBody>
     </PickerWrapper>
   )
@@ -42,6 +47,7 @@ ColorPickerHSL.propTypes = {
   className: PropTypes.string,
   colorName: PropTypes.string,
   colorHex: PropTypes.string,
+  setColorHex: PropTypes.func,
 }
 
 const PickerWrapper = styled.div`
