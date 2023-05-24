@@ -10,7 +10,14 @@ function PickerPanel({ hover, colorHex, setColorHex }) {
   const [colorS, setColorS] = useState(fromHexToHsl(colorHex)[1])
   const [colorL, setColorL] = useState(fromHexToHsl(colorHex)[2])
 
-  // lorsqu'une valeur de H,S ou L est modifiée, on renvoie une couleur Hex
+  // lorsque colorHex est modifié (ex : bouton "réinitialiser") les valeurs de H,S ou L sont modifiées
+  useEffect(() => {
+    setColorH(fromHexToHsl(colorHex)[0])
+    setColorS(fromHexToHsl(colorHex)[1])
+    setColorL(fromHexToHsl(colorHex)[2])
+  }, [colorHex])
+
+  // lorsqu'une valeur de H,S ou L est modifiée, on retourne la nouvelle couleur Hex correspondante
   useEffect(() => {
     setColorHex(fromHslToHex(colorH, colorS, colorL))
   }, [colorH, colorS, colorL, setColorHex])

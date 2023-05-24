@@ -12,7 +12,6 @@ function PickerCursor({
   colorL,
   onChange,
 }) {
-  //showData = false
   const viewportWidth = useViewportWidth() // détermine la largeur du viewport (on load + on resize)
   const refCursorDirection = useRef(null) // ajoute une ref sur la trajectoire du curseur
   const [width, setWidth] = useState(0) // définit la largeur de la trajectoire du curseur

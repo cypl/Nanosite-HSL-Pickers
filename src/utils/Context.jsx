@@ -5,33 +5,29 @@ import { colorStarter } from './colorStarter'
 export const ColorContext = createContext()
 
 export const ColorProvider = ({ children }) => {
-  // $primaire1
   const [colorPrimaire1, setColorPrimaire1] = useState(colorStarter.primary1)
-
-  // $primaire
   const [colorPrimaire, setColorPrimaire] = useState(colorStarter.primary)
-
-  // $primaire2
   const [colorPrimaire2, setColorPrimaire2] = useState(colorStarter.primary2)
-
-  // $secondaire1
   const [colorSecondaire1, setColorSecondaire1] = useState(
     colorStarter.secondary1
   )
-
-  // $secondaire
   const [colorSecondaire, setColorSecondaire] = useState(colorStarter.secondary)
-
-  // $secondaire2
   const [colorSecondaire2, setColorSecondaire2] = useState(
     colorStarter.secondary2
   )
-
-  // $clair
   const [colorClair, setColorClair] = useState(colorStarter.clair)
-
-  // $clair2
   const [colorClair2, setColorClair2] = useState(colorStarter.clair2)
+
+  function backToTheBegining() {
+    setColorPrimaire1(colorStarter.primary1)
+    setColorPrimaire(colorStarter.primary)
+    setColorPrimaire2(colorStarter.primary2)
+    setColorSecondaire1(colorStarter.secondary1)
+    setColorSecondaire(colorStarter.secondary)
+    setColorSecondaire2(colorStarter.secondary2)
+    setColorClair(colorStarter.clair)
+    setColorClair2(colorStarter.clair2)
+  }
 
   return (
     <ColorContext.Provider
@@ -52,6 +48,7 @@ export const ColorProvider = ({ children }) => {
         setColorSecondaire2,
         setColorClair,
         setColorClair2,
+        backToTheBegining,
       }}
     >
       {children}

@@ -95,14 +95,18 @@ function ColorPickers() {
 export default ColorPickers
 
 const Content = styled.div`
-  width: 100vw;
-  height: calc(100vh - 80px);
+  width: calc(100vw - 60px);
+  height: calc(100vh - 110px);
   background-color: #111;
   overflow: hidden;
   position: fixed;
   margin: 0;
   top: 80px;
+  left: 30px;
   display: flex;
+  border-radius: 7px;
+  outline: 3px solid rgba(0, 0, 0, 0.2);
+  z-index: 1;
 `
 const Column = styled.div`
   &.column_38 {

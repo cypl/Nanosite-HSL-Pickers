@@ -56,14 +56,13 @@ const PickerWrapper = styled.div`
   height: ${(props) => props.sizeH || 'auto'};
   aspect-ratio: ${(props) => props.sizeRatio || 'auto'};
   &.primaire {
-    border-top: 5px solid #111;
-    border-left: 5px solid #111;
-    border-bottom: 5px solid #111;
+    // border-top: 5px solid #111;
+    // border-bottom: 5px solid #111;
   }
   &.secondaire {
-    border-top: 5px solid #111;
-    border-right: 5px solid #111;
-    border-bottom: 5px solid #111;
+    // border-top: 5px solid #111;
+    // border-right: 5px solid #111;
+    // border-bottom: 5px solid #111;
   }
 `
 const PickerBody = styled.div`
