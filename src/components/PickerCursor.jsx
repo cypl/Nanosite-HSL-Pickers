@@ -54,15 +54,6 @@ function PickerCursor({ showData, cssClass, colorH, colorS, colorL }) {
     }
     // si on modifie une position, on calcule la nouvelle valeur,
 
-    // if (cssClass === 'hue') {
-    //   setColorH(calculateValueFormPosition(cursorPosition, width))
-    // }
-    // if (cssClass === 'saturation') {
-    //   setColorS(calculateValueFormPosition(cursorPosition, width))
-    // }
-    // if (cssClass === 'lightness') {
-    //   setColorL(calculateValueFormPosition(cursorPosition, width))
-    // }
     console.log(calculateValueFormPosition(cursorPosition, width))
   }, [cursorPosition, cssClass, width])
 

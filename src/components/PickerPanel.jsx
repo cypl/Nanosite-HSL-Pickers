@@ -1,3 +1,5 @@
+import { useState } from 'react'
+import { fromHexToHSL } from '../utils/colorTransform'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import PickerCursor from './PickerCursor'
@@ -22,7 +24,12 @@ const PickerSettingsPanel = styled.div`
   }
 `
 
-function PickerPanel({ hover, colorH, colorS, colorL }) {
+function PickerPanel({ hover, colorHex }) {
+  // ici, on récupère H,S,L à partir de colorHex
+  const [colorH, setColorH] = useState(fromHexToHSL(colorHex)[0])
+  const [colorS, setColorS] = useState(fromHexToHSL(colorHex)[1])
+  const [colorL, setColorL] = useState(fromHexToHSL(colorHex)[2])
+
   return (
     <PickerSettingsPanel className={hover ? 'active' : ''}>
       <PickerCursor
@@ -54,7 +61,5 @@ export default PickerPanel
 
 PickerPanel.propTypes = {
   hover: PropTypes.bool,
-  colorH: PropTypes.number,
-  colorS: PropTypes.number,
-  colorL: PropTypes.number,
+  colorHex: PropTypes.string,
 }
