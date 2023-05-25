@@ -31,6 +31,7 @@ function ColorPickers() {
           colorName={'$primaire1'}
           colorHex={colorPrimaire1}
           setColorHex={setColorPrimaire1}
+          showLightness={false}
         />
         <ColorPickerHSL
           className={'primaire'}
@@ -39,6 +40,7 @@ function ColorPickers() {
           colorName={'$primaire'}
           colorHex={colorPrimaire}
           setColorHex={setColorPrimaire}
+          showLightness={true}
         />
         <ColorPickerHSL
           sizeW={'100%'}
@@ -46,6 +48,7 @@ function ColorPickers() {
           colorName={'$primaire2'}
           colorHex={colorPrimaire2}
           setColorHex={setColorPrimaire2}
+          showLightness={true}
         />
       </Column>
       <Column className="column_38">
@@ -55,6 +58,7 @@ function ColorPickers() {
           colorName={'$secondaire1'}
           colorHex={colorSecondaire1}
           setColorHex={setColorSecondaire1}
+          showLightness={true}
         />
         <ColorPickerHSL
           className={'secondaire'}
@@ -63,6 +67,7 @@ function ColorPickers() {
           colorName={'$secondaire'}
           colorHex={colorSecondaire}
           setColorHex={setColorSecondaire}
+          showLightness={true}
         />
         <ColorPickerHSL
           sizeW={'100%'}
@@ -70,6 +75,7 @@ function ColorPickers() {
           colorName={'$secondaire2'}
           colorHex={colorSecondaire2}
           setColorHex={setColorSecondaire2}
+          showLightness={true}
         />
       </Column>
       <Column className="column_24">
@@ -79,6 +85,7 @@ function ColorPickers() {
           colorName={'$clair'}
           colorHex={colorClair}
           setColorHex={setColorClair}
+          showLightness={true}
         />
         <ColorPickerHSL
           sizeW={'100%'}
@@ -86,6 +93,7 @@ function ColorPickers() {
           colorName={'$clair2'}
           colorHex={colorClair2}
           setColorHex={setColorClair2}
+          showLightness={true}
         />
       </Column>
     </Content>

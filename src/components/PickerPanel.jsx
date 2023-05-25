@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import PickerCursor from './PickerCursor'
 
-function PickerPanel({ hover, colorHex, setColorHex }) {
+function PickerPanel({ hover, colorHex, setColorHex, showLightness }) {
   // on récupère les valeurs de H, S, L à partir de colorHex
   const [colorH, setColorH] = useState(fromHexToHsl(colorHex)[0])
   const [colorS, setColorS] = useState(fromHexToHsl(colorHex)[1])
@@ -40,14 +40,16 @@ function PickerPanel({ hover, colorHex, setColorHex }) {
         colorL={colorL}
         onChange={setColorS}
       />
-      <PickerCursor
-        showData={false}
-        cssClass={'lightness'}
-        colorH={colorH}
-        colorS={colorS}
-        colorL={colorL}
-        onChange={setColorL}
-      />
+      {showLightness && (
+        <PickerCursor
+          showData={false}
+          cssClass={'lightness'}
+          colorH={colorH}
+          colorS={colorS}
+          colorL={colorL}
+          onChange={setColorL}
+        />
+      )}
     </PickerSettingsPanel>
   )
 }
@@ -58,6 +60,7 @@ PickerPanel.propTypes = {
   hover: PropTypes.bool,
   colorHex: PropTypes.string,
   setColorHex: PropTypes.func,
+  showLightness: PropTypes.bool,
 }
 
 const PickerSettingsPanel = styled.div`
