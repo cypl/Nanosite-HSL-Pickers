@@ -2,7 +2,7 @@
  * Couleurs de base pour commencer un projet.
  */
 export const colorStarter = {
-  primary1: '#4271FF', //#4C73DD
+  primary1: '#4271FF',
   primary: '#1E3288',
   primary2: '#110d47',
   secondary1: '#3fde83',

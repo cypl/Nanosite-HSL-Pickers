@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import ColorPickerHSL from './ColorPickerHSL'
+import ColorPickerHSL from './color-picker/ColorPickerHSL'
 import { useContext } from 'react'
 import { ColorContext } from '../utils/Context'
 
@@ -40,7 +40,7 @@ function ColorPickers() {
           colorName={'$primaire'}
           colorHex={colorPrimaire}
           setColorHex={setColorPrimaire}
-          showLightness={true}
+          showLightness={false}
         />
         <ColorPickerHSL
           sizeW={'100%'}
@@ -48,7 +48,7 @@ function ColorPickers() {
           colorName={'$primaire2'}
           colorHex={colorPrimaire2}
           setColorHex={setColorPrimaire2}
-          showLightness={true}
+          showLightness={false}
         />
       </Column>
       <Column className="column_38">
@@ -58,7 +58,7 @@ function ColorPickers() {
           colorName={'$secondaire1'}
           colorHex={colorSecondaire1}
           setColorHex={setColorSecondaire1}
-          showLightness={true}
+          showLightness={false}
         />
         <ColorPickerHSL
           className={'secondaire'}
@@ -67,7 +67,7 @@ function ColorPickers() {
           colorName={'$secondaire'}
           colorHex={colorSecondaire}
           setColorHex={setColorSecondaire}
-          showLightness={true}
+          showLightness={false}
         />
         <ColorPickerHSL
           sizeW={'100%'}
@@ -75,7 +75,7 @@ function ColorPickers() {
           colorName={'$secondaire2'}
           colorHex={colorSecondaire2}
           setColorHex={setColorSecondaire2}
-          showLightness={true}
+          showLightness={false}
         />
       </Column>
       <Column className="column_24">
@@ -85,7 +85,7 @@ function ColorPickers() {
           colorName={'$clair'}
           colorHex={colorClair}
           setColorHex={setColorClair}
-          showLightness={true}
+          showLightness={false}
         />
         <ColorPickerHSL
           sizeW={'100%'}
@@ -93,7 +93,7 @@ function ColorPickers() {
           colorName={'$clair2'}
           colorHex={colorClair2}
           setColorHex={setColorClair2}
-          showLightness={true}
+          showLightness={false}
         />
       </Column>
     </Content>

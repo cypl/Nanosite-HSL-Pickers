@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { fromHexToHsl, fromHslToHex } from '../utils/colorTransform'
+import { fromHexToHsl, fromHslToHex } from '../../utils/colorTransform'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import PickerCursor from './PickerCursor'

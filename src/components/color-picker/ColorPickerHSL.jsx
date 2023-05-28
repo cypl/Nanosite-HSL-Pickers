@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import PickerInfos from './PickerInfos'
 import PickerPanel from './PickerPanel'
+import PickerInfos from './PickerInfos'
 
 function ColorPickerHSL({
   sizeH,

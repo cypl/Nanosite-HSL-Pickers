@@ -2,7 +2,7 @@ import { useState, useRef, useLayoutEffect } from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import Draggable from 'react-draggable'
-import { useViewportWidth } from '../hooks/useViewportWidth'
+import { useViewportWidth } from '../../hooks/useViewportWidth'
 
 function PickerCursor({
   showData,
