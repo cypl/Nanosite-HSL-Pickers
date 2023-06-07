@@ -25,7 +25,6 @@ function PickerPanel({ hover, colorHex, setColorHex, showLightness }) {
   return (
     <PickerSettingsPanel className={hover ? 'active' : ''}>
       <PickerCursor
-        showData={false}
         cssClass={'hue'}
         colorH={colorH}
         colorS={colorS}
@@ -33,7 +32,6 @@ function PickerPanel({ hover, colorHex, setColorHex, showLightness }) {
         onChange={setColorH}
       />
       <PickerCursor
-        showData={false}
         cssClass={'saturation'}
         colorH={colorH}
         colorS={colorS}
@@ -42,7 +40,6 @@ function PickerPanel({ hover, colorHex, setColorHex, showLightness }) {
       />
       {showLightness && (
         <PickerCursor
-          showData={false}
           cssClass={'lightness'}
           colorH={colorH}
           colorS={colorS}
@@ -75,6 +72,7 @@ const PickerSettingsPanel = styled.div`
   opacity: 0;
   transform: translateY(10px);
   transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+  z-index: 1;
   &.active {
     visibility: visible;
     opacity: 1;
