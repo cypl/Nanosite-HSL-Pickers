@@ -1,17 +1,19 @@
 import styled from 'styled-components'
 import Logo from './Logo'
 import { useContext } from 'react'
-import { ColorContext } from '../utils/Context'
+import { ColorContext, ModalContext } from '../utils/Context'
+import Export from './modal-contents/Export'
 
 function Header() {
   const { backToTheBegining } = useContext(ColorContext)
+  const { openModal } = useContext(ModalContext)
 
   return (
     <HeaderWrapper>
       <Logo />
       <Nav>
         <ItemNav className="inactive">Test RGAA</ItemNav>
-        <ItemNav className="inactive">Exporter</ItemNav>
+        <ItemNav onClick={() => openModal(<Export />)}>Exporter</ItemNav>
         <ItemNav onClick={() => backToTheBegining()}>Réinitialiser</ItemNav>
         <ItemNav className="inactive">
           <span>

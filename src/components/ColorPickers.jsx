@@ -114,7 +114,6 @@ const Content = styled.div`
   display: flex;
   border-radius: 7px;
   outline: 3px solid rgba(0, 0, 0, 0.2);
-  z-index: 1;
 `
 const Column = styled.div`
   &.column_38 {

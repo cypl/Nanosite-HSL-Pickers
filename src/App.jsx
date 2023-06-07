@@ -1,13 +1,17 @@
 import Header from './components/Header'
-import { ColorProvider } from './utils/Context'
+import { ColorProvider, ModalProvider } from './utils/Context'
 import ColorPickers from './components/ColorPickers'
+import Modal from './components/Modal'
 
 function App() {
   return (
     <div>
       <ColorProvider>
-        <Header />
-        <ColorPickers />
+        <ModalProvider>
+          <Header />
+          <ColorPickers />
+          <Modal />
+        </ModalProvider>
       </ColorProvider>
     </div>
   )

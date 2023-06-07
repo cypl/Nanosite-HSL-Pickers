@@ -59,3 +59,37 @@ export const ColorProvider = ({ children }) => {
 ColorProvider.propTypes = {
   children: PropTypes.any,
 }
+
+export const ModalContext = createContext()
+
+export const ModalProvider = ({ children }) => {
+  const [isOpen, setOpen] = useState(false)
+  // eslint-disable-next-line no-unused-vars
+  const [modalContent, setModalContent] = useState('')
+
+  function openModal(modalContent) {
+    setOpen(true)
+    setModalContent(modalContent)
+  }
+  function closeModal() {
+    setOpen(false)
+    setModalContent('')
+  }
+
+  return (
+    <ModalContext.Provider
+      value={{
+        isOpen,
+        modalContent,
+        openModal,
+        closeModal,
+      }}
+    >
+      {children}
+    </ModalContext.Provider>
+  )
+}
+
+ModalProvider.propTypes = {
+  children: PropTypes.any,
+}
