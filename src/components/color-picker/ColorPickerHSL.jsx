@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import PickerPanel from './PickerPanel'
+//import PickerPanel from './PickerPanel'
 import PickerInfos from './PickerInfos'
 
 function ColorPickerHSL({
@@ -10,9 +10,11 @@ function ColorPickerHSL({
   sizeRatio,
   className,
   colorName,
-  colorHex,
-  setColorHex,
-  showLightness,
+  colorHSL,
+  //setColorHSL,
+  // colorHex,
+  // setColorHex,
+  //showLightness,
 }) {
   const [hover, setHover] = useState(false)
   return (
@@ -26,16 +28,16 @@ function ColorPickerHSL({
     >
       <PickerBody
         style={{
-          backgroundColor: colorHex,
+          backgroundColor: `hsl(${colorHSL[0]}, ${colorHSL[1]}%, ${colorHSL[2]}%)`,
         }}
       >
-        <PickerInfos colorName={colorName} hexValue={colorHex} hover={hover} />
-        <PickerPanel
+        <PickerInfos colorName={colorName} colorHSL={colorHSL} hover={hover} />
+        {/* <PickerPanel
           hover={hover}
-          colorHex={colorHex}
-          setColorHex={setColorHex}
+          // colorHex={colorHex}
+          // setColorHex={setColorHex}
           showLightness={showLightness}
-        />
+        /> */}
       </PickerBody>
     </PickerWrapper>
   )
@@ -48,8 +50,8 @@ ColorPickerHSL.propTypes = {
   sizeRatio: PropTypes.string,
   className: PropTypes.string,
   colorName: PropTypes.string,
-  colorHex: PropTypes.string,
-  setColorHex: PropTypes.func,
+  colorHSL: PropTypes.array,
+  setColorHSL: PropTypes.func,
   showLightness: PropTypes.bool,
 }
 

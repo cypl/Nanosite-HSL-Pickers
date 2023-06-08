@@ -6,9 +6,9 @@ import PickerCursor from './PickerCursor'
 
 function PickerPanel({ hover, colorHex, setColorHex, showLightness }) {
   // on récupère les valeurs de H, S, L à partir de colorHex
-  const [colorH, setColorH] = useState(fromHexToHsl(colorHex)[0])
-  const [colorS, setColorS] = useState(fromHexToHsl(colorHex)[1])
-  const [colorL, setColorL] = useState(fromHexToHsl(colorHex)[2])
+  const [colorH, setColorH] = useState()
+  const [colorS, setColorS] = useState()
+  const [colorL, setColorL] = useState()
 
   // lorsque colorHex est modifié (ex : bouton "réinitialiser") les valeurs de H,S ou L sont modifiées
   useEffect(() => {

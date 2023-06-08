@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import ColorPickerHSL from './color-picker/ColorPickerHSL'
 import { useContext } from 'react'
-import { ColorContext } from '../utils/Context'
+import { ContextHSL } from '../utils/ContextHSL'
 
 function ColorPickers() {
   const {
@@ -21,7 +21,8 @@ function ColorPickers() {
     setColorSecondaire2,
     setColorClair,
     setColorClair2,
-  } = useContext(ColorContext)
+  } = useContext(ContextHSL)
+
   return (
     <Content>
       <Column className="column_38">
@@ -29,8 +30,8 @@ function ColorPickers() {
           sizeW={'100%'}
           sizeH={'33.33%'}
           colorName={'$primaire1'}
-          colorHex={colorPrimaire1}
-          setColorHex={setColorPrimaire1}
+          colorHSL={colorPrimaire1}
+          setColorHSL={setColorPrimaire1}
           showLightness={true}
         />
         <ColorPickerHSL
@@ -38,16 +39,16 @@ function ColorPickers() {
           sizeW={'100%'}
           sizeH={'33.33%'}
           colorName={'$primaire'}
-          colorHex={colorPrimaire}
-          setColorHex={setColorPrimaire}
+          colorHSL={colorPrimaire}
+          setColorHSL={setColorPrimaire}
           showLightness={true}
         />
         <ColorPickerHSL
           sizeW={'100%'}
           sizeH={'33.33%'}
           colorName={'$primaire2'}
-          colorHex={colorPrimaire2}
-          setColorHex={setColorPrimaire2}
+          colorHSL={colorPrimaire2}
+          setColorHSL={setColorPrimaire2}
           showLightness={true}
         />
       </Column>
@@ -56,8 +57,8 @@ function ColorPickers() {
           sizeW={'100%'}
           sizeH={'33.33%'}
           colorName={'$secondaire1'}
-          colorHex={colorSecondaire1}
-          setColorHex={setColorSecondaire1}
+          colorHSL={colorSecondaire1}
+          setColorHSL={setColorSecondaire1}
           showLightness={true}
         />
         <ColorPickerHSL
@@ -65,16 +66,16 @@ function ColorPickers() {
           sizeW={'100%'}
           sizeH={'33.33%'}
           colorName={'$secondaire'}
-          colorHex={colorSecondaire}
-          setColorHex={setColorSecondaire}
+          colorHSL={colorSecondaire}
+          setColorHSL={setColorSecondaire}
           showLightness={true}
         />
         <ColorPickerHSL
           sizeW={'100%'}
           sizeH={'33.33%'}
           colorName={'$secondaire2'}
-          colorHex={colorSecondaire2}
-          setColorHex={setColorSecondaire2}
+          colorHSL={colorSecondaire2}
+          setColorHSL={setColorSecondaire2}
           showLightness={true}
         />
       </Column>
@@ -83,16 +84,16 @@ function ColorPickers() {
           sizeW={'100%'}
           sizeH={'50%'}
           colorName={'$clair'}
-          colorHex={colorClair}
-          setColorHex={setColorClair}
+          colorHSL={colorClair}
+          setColorHSL={setColorClair}
           showLightness={true}
         />
         <ColorPickerHSL
           sizeW={'100%'}
           sizeH={'50%'}
           colorName={'$clair2'}
-          colorHex={colorClair2}
-          setColorHex={setColorClair2}
+          colorHSL={colorClair2}
+          setColorHSL={setColorClair2}
           showLightness={true}
         />
       </Column>

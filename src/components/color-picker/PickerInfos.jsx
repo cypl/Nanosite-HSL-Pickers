@@ -1,6 +1,45 @@
 import { useState, useRef, useLayoutEffect } from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
+import { fromHslToHex } from '../../utils/colorTransform'
+
+function PickerInfos({ colorName, colorHSL, hover }) {
+  const [hexColor, setHexColor] = useState(calcHexValue())
+  const ref = useRef(null)
+  const [width, setWidth] = useState(0)
+  useLayoutEffect(() => {
+    setWidth(ref.current.clientWidth)
+  }, [])
+
+  function calcHexValue() {
+    return fromHslToHex(colorHSL[0], colorHSL[1], colorHSL[2])
+  }
+  console.log(calcHexValue())
+  return (
+    <PickerColorInfos width={width} className={hover ? 'active' : ''}>
+      <PickerColorInfosName>{colorName}</PickerColorInfosName>
+      <PickerColorInfosAnim
+        width={width}
+        className={hover ? 'active' : ''}
+        ref={ref}
+      >
+        <PickerColorInfosSep className={hover ? 'active' : ''}>
+          :
+        </PickerColorInfosSep>
+        <PickerColorInfosValue className={hover ? 'active' : ''}>
+          {hexColor}
+        </PickerColorInfosValue>
+      </PickerColorInfosAnim>
+    </PickerColorInfos>
+  )
+}
+export default PickerInfos
+
+PickerInfos.propTypes = {
+  colorName: PropTypes.string,
+  colorHSL: PropTypes.array,
+  hover: PropTypes.bool,
+}
 
 const PickerColorInfos = styled.div`
   position: absolute;
@@ -52,36 +91,3 @@ const PickerColorInfosValue = styled.div`
     transition: opacity 0.05s ease-in-out 0.15s;
   }
 `
-
-function PickerInfos({ colorName, hexValue, hover }) {
-  const ref = useRef(null)
-  const [width, setWidth] = useState(0)
-  useLayoutEffect(() => {
-    setWidth(ref.current.clientWidth)
-  }, [])
-
-  return (
-    <PickerColorInfos width={width} className={hover ? 'active' : ''}>
-      <PickerColorInfosName>{colorName}</PickerColorInfosName>
-      <PickerColorInfosAnim
-        width={width}
-        className={hover ? 'active' : ''}
-        ref={ref}
-      >
-        <PickerColorInfosSep className={hover ? 'active' : ''}>
-          :
-        </PickerColorInfosSep>
-        <PickerColorInfosValue className={hover ? 'active' : ''}>
-          {hexValue}
-        </PickerColorInfosValue>
-      </PickerColorInfosAnim>
-    </PickerColorInfos>
-  )
-}
-export default PickerInfos
-
-PickerInfos.propTypes = {
-  colorName: PropTypes.string,
-  hexValue: PropTypes.string,
-  hover: PropTypes.bool,
-}
