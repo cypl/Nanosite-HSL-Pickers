@@ -30,8 +30,11 @@ function ColorPickers() {
           sizeH={'33.33%'}
           colorName={'$primaire1'}
           colorHex={colorPrimaire1}
+          expectedLightness={390}
           setColorHex={setColorPrimaire1}
-          showLightness={true}
+          showLightnessPicker={true}
+          roundedTop={true}
+          roundedBottom={false}
         />
         <ColorPickerHSL
           className={'primaire'}
@@ -39,16 +42,22 @@ function ColorPickers() {
           sizeH={'33.33%'}
           colorName={'$primaire'}
           colorHex={colorPrimaire}
+          expectedLightness={190}
           setColorHex={setColorPrimaire}
-          showLightness={true}
+          showLightnessPicker={true}
+          roundedTop={false}
+          roundedBottom={false}
         />
         <ColorPickerHSL
           sizeW={'100%'}
           sizeH={'33.33%'}
           colorName={'$primaire2'}
           colorHex={colorPrimaire2}
+          expectedLightness={15}
           setColorHex={setColorPrimaire2}
-          showLightness={true}
+          showLightnessPicker={true}
+          roundedTop={false}
+          roundedBottom={true}
         />
       </Column>
       <Column className="column_38">
@@ -57,8 +66,11 @@ function ColorPickers() {
           sizeH={'33.33%'}
           colorName={'$secondaire1'}
           colorHex={colorSecondaire1}
+          expectedLightness={390}
           setColorHex={setColorSecondaire1}
-          showLightness={true}
+          showLightnessPicker={true}
+          roundedTop={true}
+          roundedBottom={false}
         />
         <ColorPickerHSL
           className={'secondaire'}
@@ -66,16 +78,22 @@ function ColorPickers() {
           sizeH={'33.33%'}
           colorName={'$secondaire'}
           colorHex={colorSecondaire}
+          expectedLightness={190}
           setColorHex={setColorSecondaire}
-          showLightness={true}
+          showLightnessPicker={true}
+          roundedTop={false}
+          roundedBottom={false}
         />
         <ColorPickerHSL
           sizeW={'100%'}
           sizeH={'33.33%'}
           colorName={'$secondaire2'}
           colorHex={colorSecondaire2}
+          expectedLightness={15}
           setColorHex={setColorSecondaire2}
-          showLightness={true}
+          showLightnessPicker={true}
+          roundedTop={false}
+          roundedBottom={true}
         />
       </Column>
       <Column className="column_24">
@@ -84,16 +102,22 @@ function ColorPickers() {
           sizeH={'50%'}
           colorName={'$clair'}
           colorHex={colorClair}
+          expectedLightness={950}
           setColorHex={setColorClair}
-          showLightness={true}
+          showLightnessPicker={true}
+          roundedTop={true}
+          roundedBottom={false}
         />
         <ColorPickerHSL
           sizeW={'100%'}
           sizeH={'50%'}
           colorName={'$clair2'}
           colorHex={colorClair2}
+          expectedLightness={600}
           setColorHex={setColorClair2}
-          showLightness={true}
+          showLightnessPicker={true}
+          roundedTop={false}
+          roundedBottom={true}
         />
       </Column>
     </Content>
@@ -106,20 +130,18 @@ const Content = styled.div`
   width: calc(100vw - 60px);
   height: calc(100vh - 110px);
   background-color: #111;
-  // overflow: hidden;
   position: fixed;
   margin: 0;
   top: 80px;
   left: 30px;
   display: flex;
-  // border-radius: 7px;
-  outline: 3px solid rgba(0, 0, 0, 0.2);
+  justify-content: space-between;
 `
 const Column = styled.div`
   &.column_38 {
-    width: 38%;
+    width: calc(38% - 10px);
   }
   &.column_24 {
-    width: 24%;
+    width: calc(24% - 10px);
   }
 `

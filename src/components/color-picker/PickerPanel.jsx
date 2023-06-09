@@ -3,24 +3,31 @@ import { fromHexToHsl, fromHslToHex } from '../../utils/colorTransform'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import PickerCursor from './PickerCursor'
+//import { relativeLuminanceW3C } from '../../utils/colorTransform'
+//import { fromHexToRgb } from '../../utils/colorTransform'
 
-function PickerPanel({ hover, colorHex, setColorHex, showLightness }) {
+function PickerPanel({ hover, colorHex, setColorHex, showLightnessPicker }) {
   // on récupère les valeurs de H, S, L à partir de colorHex
-  const [colorH, setColorH] = useState(fromHexToHsl(colorHex)[0])
-  const [colorS, setColorS] = useState(fromHexToHsl(colorHex)[1])
-  const [colorL, setColorL] = useState(fromHexToHsl(colorHex)[2])
+  const [colorH, setColorH] = useState(fromHexToHsl(colorHex)[0]) // fromHexToHsl(colorHex)[0]
+  const [colorS, setColorS] = useState(fromHexToHsl(colorHex)[1]) // fromHexToHsl(colorHex)[1]
+  const [colorL, setColorL] = useState(fromHexToHsl(colorHex)[2]) // fromHexToHsl(colorHex)[2]
 
   // lorsque colorHex est modifié (ex : bouton "réinitialiser") les valeurs de H,S ou L sont modifiées
   useEffect(() => {
     setColorH(fromHexToHsl(colorHex)[0])
     setColorS(fromHexToHsl(colorHex)[1])
     setColorL(fromHexToHsl(colorHex)[2])
-  }, [colorHex])
+  }, []) // colorHex
 
-  // lorsqu'une valeur de H,S ou L est modifiée, on retourne la nouvelle couleur Hex correspondante
+  // lorsqu'une valeur de H, S ou L est modifiée, on retourne la nouvelle couleur Hex correspondante
   useEffect(() => {
     setColorHex(fromHslToHex(colorH, colorS, colorL))
-  }, [colorH, colorS, colorL, setColorHex])
+  }, [colorH, colorS, colorL]) // colorH, colorS, colorL, setColorHex
+
+  //setColorHex(fromHslToHex(colorH, colorS, colorL))
+  // const RgB = fromHexToRgb(colorHex)
+  // console.log(RgB)
+  // console.log(Math.round(relativeLuminanceW3C(RgB[0], RgB[1], RgB[2]) * 100))
 
   return (
     <PickerSettingsPanel className={hover ? 'active' : ''}>
@@ -38,7 +45,7 @@ function PickerPanel({ hover, colorHex, setColorHex, showLightness }) {
         colorL={colorL}
         onChange={setColorS}
       />
-      {showLightness && (
+      {showLightnessPicker && (
         <PickerCursor
           cssClass={'lightness'}
           colorH={colorH}
@@ -57,7 +64,7 @@ PickerPanel.propTypes = {
   hover: PropTypes.bool,
   colorHex: PropTypes.string,
   setColorHex: PropTypes.func,
-  showLightness: PropTypes.bool,
+  showLightnessPicker: PropTypes.bool,
 }
 
 const PickerSettingsPanel = styled.div`

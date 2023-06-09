@@ -31,10 +31,13 @@ function PickerCursor({ cssClass, colorH, colorS, colorL, onChange }) {
   useEffect(() => {
     if (cssClass === 'hue') {
       console.log(Math.round((value / 100) * 360))
+      onChange(Math.round((value / 100) * 360))
     } else if (cssClass === 'saturation') {
       console.log(Math.round(value))
+      onChange(Math.round(value))
     } else if (cssClass === 'lightness') {
       console.log(Math.round(value))
+      onChange(Math.round(value))
     } else {
       console.log(
         "La valeur de couleur n'a pas pu être calculée, parce que la classe CSS sur un des color picker n'est pas bonne (hue, saturation ou lightness)."
@@ -57,6 +60,7 @@ function PickerCursor({ cssClass, colorH, colorS, colorL, onChange }) {
   return (
     <>
       <SliderHSL
+        cssClass={cssClass}
         style={{
           background:
             (cssClass === 'hue' && gradientHue) ||
@@ -118,6 +122,7 @@ PickerCursor.propTypes = {
 }
 
 const SliderHSL = styled(Slider)`
+  position: relative;
   margin: 7px 0;
   padding: 2px;
   border-radius: 10px;
@@ -127,3 +132,14 @@ const SliderHSL = styled(Slider)`
     background-color: transparent;
   }
 `
+// &::after {
+//   content: '';
+//   position: absolute;
+//   width: calc(100% + 4px);
+//   height: calc(100% + 4px);
+//   background-color: rgba(0, 0, 0, 0.7);
+//   left: -2px;
+//   top: ${(props) =>
+//     props.cssClass === 'lightness' ? '-2px' : '-200000px'};
+//   border-radius: 10px;
+//   z-index: 999;

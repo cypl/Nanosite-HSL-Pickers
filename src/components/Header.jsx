@@ -13,8 +13,12 @@ function Header() {
       <Logo />
       <Nav>
         <ItemNav className="inactive">Test RGAA</ItemNav>
-        <ItemNav onClick={() => openModal(<Export />)}>Exporter</ItemNav>
-        <ItemNav onClick={() => backToTheBegining()}>Réinitialiser</ItemNav>
+        <ItemNav className="inactive" onClick={() => openModal(<Export />)}>
+          Exporter
+        </ItemNav>
+        <ItemNav className="inactive" onClick={() => backToTheBegining()}>
+          Réinitialiser
+        </ItemNav>
         <ItemNav className="inactive">
           <span>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 110">
