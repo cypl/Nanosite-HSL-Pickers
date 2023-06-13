@@ -2,6 +2,39 @@ import { useState, useRef, useLayoutEffect } from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
+function PickerInfos({ colorName, hexValue, hover }) {
+  const ref = useRef(null)
+  const [width, setWidth] = useState(0)
+  useLayoutEffect(() => {
+    setWidth(ref.current.clientWidth)
+  }, [])
+
+  return (
+    <PickerColorInfos width={width} className={hover ? 'active' : ''}>
+      <PickerColorInfosName>{colorName}</PickerColorInfosName>
+      <PickerColorInfosAnim
+        width={width}
+        className={hover ? 'active' : ''}
+        ref={ref}
+      >
+        <PickerColorInfosSep className={hover ? 'active' : ''}>
+          :
+        </PickerColorInfosSep>
+        <PickerColorInfosValue className={hover ? 'active' : ''}>
+          {hexValue}
+        </PickerColorInfosValue>
+      </PickerColorInfosAnim>
+    </PickerColorInfos>
+  )
+}
+export default PickerInfos
+
+PickerInfos.propTypes = {
+  colorName: PropTypes.string,
+  hexValue: PropTypes.string,
+  hover: PropTypes.bool,
+}
+
 const PickerColorInfos = styled.div`
   position: absolute;
   left: 10px;
@@ -52,36 +85,3 @@ const PickerColorInfosValue = styled.div`
     transition: opacity 0.05s ease-in-out 0.15s;
   }
 `
-
-function PickerInfos({ colorName, hexValue, hover }) {
-  const ref = useRef(null)
-  const [width, setWidth] = useState(0)
-  useLayoutEffect(() => {
-    setWidth(ref.current.clientWidth)
-  }, [])
-
-  return (
-    <PickerColorInfos width={width} className={hover ? 'active' : ''}>
-      <PickerColorInfosName>{colorName}</PickerColorInfosName>
-      <PickerColorInfosAnim
-        width={width}
-        className={hover ? 'active' : ''}
-        ref={ref}
-      >
-        <PickerColorInfosSep className={hover ? 'active' : ''}>
-          :
-        </PickerColorInfosSep>
-        <PickerColorInfosValue className={hover ? 'active' : ''}>
-          {hexValue}
-        </PickerColorInfosValue>
-      </PickerColorInfosAnim>
-    </PickerColorInfos>
-  )
-}
-export default PickerInfos
-
-PickerInfos.propTypes = {
-  colorName: PropTypes.string,
-  hexValue: PropTypes.string,
-  hover: PropTypes.bool,
-}

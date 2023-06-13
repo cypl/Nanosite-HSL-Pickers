@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Slider } from '@mantine/core'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
+import { getRoundedValue } from '../../utils/mathRound'
 
 function PickerCursor({ cssClass, colorH, colorS, colorL, onChange }) {
   // dégadés de couleur à l'intérieur de CursorWrapper
@@ -31,13 +32,13 @@ function PickerCursor({ cssClass, colorH, colorS, colorL, onChange }) {
   useEffect(() => {
     if (cssClass === 'hue') {
       //console.log(Math.round((value / 100) * 360))
-      onChange(Math.round((value / 100) * 360))
+      onChange(getRoundedValue((value / 100) * 360, 1))
     } else if (cssClass === 'saturation') {
       //console.log(Math.round(value))
-      onChange(Math.round(value))
+      onChange(getRoundedValue(value, 1))
     } else if (cssClass === 'lightness') {
       //console.log(Math.round(value))
-      onChange(Math.round(value))
+      onChange(getRoundedValue(value, 1))
     } else {
       console.log(
         "La valeur de couleur n'a pas pu être calculée, parce que la classe CSS sur un des color picker n'est pas bonne (hue, saturation ou lightness)."
@@ -47,7 +48,7 @@ function PickerCursor({ cssClass, colorH, colorS, colorL, onChange }) {
 
   function setDefaultValue() {
     if (cssClass === 'hue') {
-      return (colorH / 360) * 100
+      return getRoundedValue((colorH / 360) * 100, 1)
     } else if (cssClass === 'saturation') {
       return colorS
     } else if (cssClass === 'lightness') {
@@ -69,9 +70,11 @@ function PickerCursor({ cssClass, colorH, colorS, colorL, onChange }) {
         step={0.05}
         label={(value) =>
           (cssClass === 'hue' &&
-            `Teinte : ${Math.round((value / 100) * 360)}°`) ||
-          (cssClass === 'saturation' && `Saturation : ${Math.round(value)}%`) ||
-          (cssClass === 'lightness' && `Luminosité : ${Math.round(value)}%`)
+            `Teinte : ${getRoundedValue((value / 100) * 360, 1)}°`) ||
+          (cssClass === 'saturation' &&
+            `Saturation : ${getRoundedValue(value, 1)}%`) ||
+          (cssClass === 'lightness' &&
+            `Luminosité : ${getRoundedValue(value, 1)}%`)
         }
         defaultValue={setDefaultValue()}
         value={value}

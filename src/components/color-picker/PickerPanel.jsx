@@ -3,8 +3,6 @@ import { fromHexToHsl, fromHslToHex } from '../../utils/colorTransform'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import PickerCursor from './PickerCursor'
-//import { relativeLuminanceW3C } from '../../utils/colorTransform'
-//import { fromHexToRgb } from '../../utils/colorTransform'
 
 function PickerPanel({ hover, colorHex, setColorHex, showLightnessPicker }) {
   // on récupère les valeurs de H, S, L à partir de colorHex
@@ -23,11 +21,6 @@ function PickerPanel({ hover, colorHex, setColorHex, showLightnessPicker }) {
   useEffect(() => {
     setColorHex(fromHslToHex(colorH, colorS, colorL))
   }, [colorH, colorS, colorL]) // colorH, colorS, colorL, setColorHex
-
-  //setColorHex(fromHslToHex(colorH, colorS, colorL))
-  // const RgB = fromHexToRgb(colorHex)
-  // console.log(RgB)
-  // console.log(Math.round(relativeLuminanceW3C(RgB[0], RgB[1], RgB[2]) * 100))
 
   return (
     <PickerSettingsPanel className={hover ? 'active' : ''}>
