@@ -1,9 +1,22 @@
 import styled from 'styled-components'
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import { ModalContext } from '../utils/Context'
 
 function Modal() {
   const { isOpen, modalContent, closeModal } = useContext(ModalContext)
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        closeModal()
+      }
+    }
+    document.addEventListener('keydown', handleKeyDown)
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [closeModal])
+
   return (
     <ModalContainer className={isOpen ? 'open' : 'close'}>
       <Background>
