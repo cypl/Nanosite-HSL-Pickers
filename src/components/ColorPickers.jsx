@@ -30,7 +30,7 @@ function ColorPickers() {
           sizeH={'33.33%'}
           colorName={'$primaire1'}
           colorHex={colorPrimaire1}
-          expectedLightness={390}
+          expectedLightness={420}
           setColorHex={setColorPrimaire1}
           showLightnessPicker={true}
           roundedTop={true}
@@ -53,7 +53,7 @@ function ColorPickers() {
           sizeH={'33.33%'}
           colorName={'$primaire2'}
           colorHex={colorPrimaire2}
-          expectedLightness={15}
+          expectedLightness={13}
           setColorHex={setColorPrimaire2}
           showLightnessPicker={true}
           roundedTop={false}
@@ -66,7 +66,7 @@ function ColorPickers() {
           sizeH={'33.33%'}
           colorName={'$secondaire1'}
           colorHex={colorSecondaire1}
-          expectedLightness={390}
+          expectedLightness={420}
           setColorHex={setColorSecondaire1}
           showLightnessPicker={true}
           roundedTop={true}
@@ -89,7 +89,7 @@ function ColorPickers() {
           sizeH={'33.33%'}
           colorName={'$secondaire2'}
           colorHex={colorSecondaire2}
-          expectedLightness={15}
+          expectedLightness={13}
           setColorHex={setColorSecondaire2}
           showLightnessPicker={true}
           roundedTop={false}

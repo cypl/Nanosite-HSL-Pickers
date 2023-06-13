@@ -65,7 +65,7 @@ export const ModalContext = createContext()
 export const ModalProvider = ({ children }) => {
   const [isOpen, setOpen] = useState(false)
   // eslint-disable-next-line no-unused-vars
-  const [modalContent, setModalContent] = useState('')
+  const [modalContent, setModalContent] = useState()
 
   function openModal(modalContent) {
     setOpen(true)
@@ -73,7 +73,7 @@ export const ModalProvider = ({ children }) => {
   }
   function closeModal() {
     setOpen(false)
-    setModalContent('')
+    setModalContent()
   }
 
   return (

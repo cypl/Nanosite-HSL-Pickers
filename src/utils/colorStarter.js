@@ -2,12 +2,12 @@
  * Couleurs de base pour commencer un projet.
  */
 export const colorStarter = {
-  primary1: '#8da3fb',
+  primary1: '#8fabff',
   primary: '#4d6bf5',
-  primary2: '#171363',
-  secondary1: '#0dbf72',
-  secondary: '#01894e',
-  secondary2: '#082617',
-  clair: '#fff5f5',
+  primary2: '#15115a',
+  secondary1: '#05c773',
+  secondary: '#048b50',
+  secondary2: '#062314',
+  clair: '#fffafa',
   clair2: '#cecaca',
 }

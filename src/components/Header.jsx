@@ -13,9 +13,7 @@ function Header() {
       <Logo />
       <Nav>
         <ItemNav className="inactive">Test RGAA</ItemNav>
-        <ItemNav className="inactive" onClick={() => openModal(<Export />)}>
-          Exporter
-        </ItemNav>
+        <ItemNav onClick={() => openModal(<Export />)}>Exporter</ItemNav>
         <ItemNav className="inactive" onClick={() => backToTheBegining()}>
           Réinitialiser
         </ItemNav>

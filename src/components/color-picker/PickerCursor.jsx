@@ -30,13 +30,13 @@ function PickerCursor({ cssClass, colorH, colorS, colorL, onChange }) {
   const [value, setValue] = useState()
   useEffect(() => {
     if (cssClass === 'hue') {
-      console.log(Math.round((value / 100) * 360))
+      //console.log(Math.round((value / 100) * 360))
       onChange(Math.round((value / 100) * 360))
     } else if (cssClass === 'saturation') {
-      console.log(Math.round(value))
+      //console.log(Math.round(value))
       onChange(Math.round(value))
     } else if (cssClass === 'lightness') {
-      console.log(Math.round(value))
+      //console.log(Math.round(value))
       onChange(Math.round(value))
     } else {
       console.log(
@@ -60,7 +60,6 @@ function PickerCursor({ cssClass, colorH, colorS, colorL, onChange }) {
   return (
     <>
       <SliderHSL
-        cssClass={cssClass}
         style={{
           background:
             (cssClass === 'hue' && gradientHue) ||

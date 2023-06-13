@@ -9,7 +9,6 @@ import { fromHexToRgb } from '../../utils/colorTransform'
 function ColorPickerHSL({
   sizeH,
   sizeW,
-  sizeRatio,
   className,
   colorName,
   colorHex,
@@ -31,19 +30,18 @@ function ColorPickerHSL({
 
   return (
     <PickerWrapper
-      sizeH={sizeH}
-      sizeW={sizeW}
-      sizeRatio={sizeRatio}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
       className={className}
+      style={{ height: sizeH, width: sizeW }}
     >
       <PickerBody
         style={{
           backgroundColor: colorHex,
+          borderRadius: `${
+            roundedTop ? '5px 5px 0 0' : roundedBottom ? '0 0 5px 5px' : '0'
+          }`,
         }}
-        roundedTop={roundedTop}
-        roundedBottom={roundedBottom}
       >
         {hover && (
           <LightnessRatio>
@@ -66,7 +64,6 @@ export default ColorPickerHSL
 ColorPickerHSL.propTypes = {
   sizeH: PropTypes.string,
   sizeW: PropTypes.string,
-  sizeRatio: PropTypes.string,
   className: PropTypes.string,
   colorName: PropTypes.string,
   colorHex: PropTypes.string,
@@ -90,9 +87,6 @@ const LightnessRatio = styled.p`
 `
 const PickerWrapper = styled.div`
   position: relative;
-  width: ${(props) => props.sizeW || 'auto'};
-  height: ${(props) => props.sizeH || 'auto'};
-  aspect-ratio: ${(props) => props.sizeRatio || 'auto'};
 `
 const PickerBody = styled.div`
   position: absolute;
@@ -100,6 +94,4 @@ const PickerBody = styled.div`
   width: 100%;
   left: 0;
   top: 0;
-  border-radius: ${(props) => (props.roundedTop ? '6px 6px 0 0' : 'none')};
-  border-radius: ${(props) => (props.roundedBottom ? '0 0 6px 6px' : 'none')};
 `

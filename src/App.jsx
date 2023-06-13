@@ -5,15 +5,13 @@ import Modal from './components/Modal'
 
 function App() {
   return (
-    <div>
-      <ColorProvider>
-        <ModalProvider>
-          <Header />
-          <ColorPickers />
-          <Modal />
-        </ModalProvider>
-      </ColorProvider>
-    </div>
+    <ColorProvider>
+      <ModalProvider>
+        <Header />
+        <ColorPickers />
+        <Modal />
+      </ModalProvider>
+    </ColorProvider>
   )
 }
 
