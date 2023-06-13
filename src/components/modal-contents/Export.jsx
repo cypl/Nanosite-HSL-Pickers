@@ -151,6 +151,7 @@ const IconCopy = styled.div`
     text-align: right;
     right: 40px;
     top: 5px;
+    white-space: nowrap;
   }
   & svg {
     opacity: 0.5;
