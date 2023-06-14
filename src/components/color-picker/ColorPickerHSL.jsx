@@ -28,6 +28,24 @@ function ColorPickerHSL({
     )
   }, [colorHex])
 
+  function testValidLightness(colorLightness, expectedLightness) {
+    if (colorLightness - expectedLightness < -15) {
+      // console.log('trop bas') // = il faut augmenter la luminosité
+      return false
+    } else if (colorLightness - expectedLightness > 15) {
+      // console.log('trop haut') // = il faut baisser la luminosité
+      return false
+    } else {
+      // console.log("c'est bon !")
+      return true
+    }
+  }
+
+  const [validLightness, setValidLightness] = useState()
+  useEffect(() => {
+    setValidLightness(testValidLightness(colorLightness, expectedLightness))
+  }, [colorLightness, expectedLightness])
+
   return (
     <PickerWrapper
       onMouseEnter={() => setHover(true)}
@@ -45,6 +63,8 @@ function ColorPickerHSL({
       >
         {hover && (
           <LightnessRatio>
+            <span className={validLightness ? 'valid' : 'not-valid'}></span>
+            {colorLightness} / {expectedLightness}
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 88.66 88.66">
               <path d="M44.33,22.95c-11.79,0-21.38,9.59-21.38,21.38s9.59,21.38,21.38,21.38,21.38-9.59,21.38-21.38-9.59-21.38-21.38-21.38Zm0,35.76c-7.93,0-14.38-6.45-14.38-14.38s6.45-14.38,14.38-14.38,14.38,6.45,14.38,14.38-6.45,14.38-14.38,14.38Z" />
               <path d="M44.33,17.17c1.93,0,3.5-1.57,3.5-3.5V3.5c0-1.93-1.57-3.5-3.5-3.5s-3.5,1.57-3.5,3.5V13.67c0,1.93,1.57,3.5,3.5,3.5Z" />
@@ -56,7 +76,6 @@ function ColorPickerHSL({
               <path d="M85.16,40.83h-10.17c-1.93,0-3.5,1.57-3.5,3.5s1.57,3.5,3.5,3.5h10.17c1.93,0,3.5-1.57,3.5-3.5s-1.57-3.5-3.5-3.5Z" />
               <path d="M66.01,26.15c.9,0,1.79-.34,2.47-1.03l7.19-7.19c1.37-1.37,1.37-3.58,0-4.95-1.37-1.37-3.58-1.37-4.95,0l-7.19,7.19c-1.37,1.37-1.37,3.58,0,4.95,.68,.68,1.58,1.02,2.47,1.02Z" />
             </svg>
-            {colorLightness} / {expectedLightness}
           </LightnessRatio>
         )}
         <PickerInfos colorName={colorName} hexValue={colorHex} hover={hover} />
@@ -91,20 +110,37 @@ const LightnessRatio = styled.p`
   right: 10px;
   top: 10px;
   color: #fff;
-  font-size: 11px;
-  line-height: 1;
-  padding: 5px 10px;
+  font-size: 10px;
+  line-height: 10px;
+  height:20px;
+  padding: 5px 20px 5px 6px;
   border-radius: 11px;
-  & svg {
-    height: 11px;
-    width: 11px;
+  & span {
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
     display: inline-block;
-    margin-right: 3px;
     vertical-align: -1px;
+    margin-right: 7px;
+    outline: 2px solid rgba(0, 0, 0, 0.2);
+    position:relative;
+    &.valid {
+      background-color: #00ef25;
+    }
+    &.not-valid {
+      background-color: #ff6a6a;
+    }
+  }
+  & svg {
+    height: 12px;
+    width: 12px;
+    display: block;
+    position:absolute;
+    top:4px;
+    right:5px;
     & path {
       fill: rgba(255, 255, 255, 0.7);
     }
-  }
 `
 const PickerWrapper = styled.div`
   position: relative;
