@@ -39,11 +39,11 @@ const PickerColorInfos = styled.div`
   position: absolute;
   left: 10px;
   top: 10px;
-  font-size: 12px;
+  font-size: 10px;
   line-height: 1;
-  padding: 5px 12px;
+  padding: 5px 10px;
   transition: 0.2s padding-right ease-in-out;
-  border-radius: 11px;
+  border-radius: 10px;
   background-color: rgba(0, 0, 0, 0.4);
   display: flex;
   &.active {
